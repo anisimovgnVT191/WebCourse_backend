@@ -1,15 +1,20 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
 val ktor_version: String by project
 val kotlin_version: String by project
 val logback_version: String by project
+val shadow_version: String by project
 
 plugins {
     application
     kotlin("jvm") version "1.7.22"
     id("io.ktor.plugin") version "2.1.3"
+    id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
 group = "com.anisimov"
 version = "0.0.1"
+
 application {
     mainClass.set("com.anisimov.ApplicationKt")
 
@@ -20,6 +25,14 @@ application {
 repositories {
     mavenCentral()
     maven(url = "https://jitpack.io")
+}
+
+tasks {
+    named<ShadowJar>("shadowJar") {
+        manifest {
+            attributes(mapOf("Main-Class" to "com.anisimov.ApplicationKt"))
+        }
+    }
 }
 
 val exposedVersion: String by project

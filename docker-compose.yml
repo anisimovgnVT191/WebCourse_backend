@@ -1,0 +1,21 @@
+version: '1.0'
+
+services:
+  db:
+    image: postgres:12
+    restart: always
+    environment:
+      POSTGRES_DB: "Pustoshit.Webapp"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "1234"
+    ports:
+      - "6060:6060"
+
+  backend:
+    image: opustoshitel-web
+    mem_limit: 300m
+    depends_on:
+      - db
+    restart: always
+    ports:
+      - "3510:3500"

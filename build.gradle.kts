@@ -19,6 +19,7 @@ application {
 
 repositories {
     mavenCentral()
+    maven(url = "https://jitpack.io")
 }
 
 val exposedVersion: String by project
@@ -32,9 +33,11 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
     testImplementation("io.ktor:ktor-server-tests-jvm:$ktor_version")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+    testImplementation("org.slf4j:slf4j-log4j12:2.0.5")
     implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
+    implementation("io.github.smiley4:ktor-swagger-ui:1.0.1")
     implementation("com.zaxxer:HikariCP:5.0.1")
     implementation("org.postgresql:postgresql:42.5.1")
     implementation("org.jetbrains.exposed:exposed-java-time:$exposedVersion")

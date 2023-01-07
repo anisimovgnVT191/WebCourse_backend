@@ -4,6 +4,7 @@ import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 import com.anisimov.plugins.*
+import io.github.smiley4.ktorswaggerui.SwaggerUI
 import io.ktor.http.*
 import io.ktor.server.plugins.defaultheaders.*
 
@@ -13,6 +14,7 @@ fun main() {
 }
 
 fun Application.module() {
+    install(SwaggerUI)
     install(DefaultHeaders) {
         header(HttpHeaders.AccessControlAllowOrigin, value = "*")
     }
